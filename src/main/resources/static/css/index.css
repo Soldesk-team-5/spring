@@ -1,0 +1,34 @@
+/* 페이지 전체 적용 */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+
+/* 로그인, 회원가입 팝업 관련 css */
+.btn_open{
+    font-weight:bold; margin:5px; padding:4px 6px; background:#000; color:#fff;
+    }
+.pop_wrap{
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background:rgba(0,0,0,.5);
+    font-size:0;
+    text-align:center;}
+.pop_wrap:after{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+    content:'';}
+.pop_wrap .pop_inner{
+    display:inline-block;
+    padding:20px 30px;
+    background:#fff;
+    width:200px;
+    vertical-align:middle;
+    font-size:15px;}
+
+/* 추천받기 버튼 */
+.rec_button{
+    font-weight:bold;
+    margin:5px;
+    padding:4px 6px;
+    background:#000;
+    color:#fff;
+    }
