@@ -21,7 +21,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.hibernate:hibernate-core:5.5.7.Final'
+	jakarta.persistence:jakarta.persistence-api
 
 	// sql plugin
 	implementation 'mysql:mysql-connector-java:8.0.28'
@@ -31,6 +31,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
 	runtimeOnly 'com.h2database:h2'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
