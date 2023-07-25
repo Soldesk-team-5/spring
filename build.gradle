@@ -21,7 +21,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.hibernate:hibernate-core'
+	implementation 'org.hibernate:hibernate-core:5.5.7.Final'
 
 	// sql plugin
 	implementation 'mysql:mysql-connector-java:8.0.28'
