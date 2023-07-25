@@ -10,7 +10,7 @@ $(document).ready(function() {
                 alert(data);
                 },
             error: function(){
-                            alert("Error occurred");
+                            alert("장바구니를 이용하시려면, 로그인 해주세요!");
                         },
         });
     });

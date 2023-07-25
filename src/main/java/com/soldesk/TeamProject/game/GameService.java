@@ -13,11 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 public class GameService {
     private final GameRepository gameRepository;
-    private List<GameDTO> gameList;
+    private List<GameDTO> gameLists;
 
     @PostConstruct
     private void init() {
-        gameList = getAllEntity();
+
+        gameLists = getAllEntity(); // gameRepository가 null이 아닐 때에만 getAllEntity() 메소드 호출
+
     }
 
     // 장르 중복제거
@@ -95,14 +97,14 @@ public class GameService {
 
     // 모든 entity를 들고와서 dto 리스트에 저장
     private List<GameDTO> getAllEntity() {
-        List<GameDTO> gameList = new ArrayList<>();
+        List<GameDTO> gameLists = new ArrayList<>();
         List<GameEntity> gameEntities = gameRepository.findAll();
         int gamesNum = gameRepository.findGameNum();
         for (int i=0; i < gamesNum; i++) {
             GameDTO dto = convertToDTO(gameEntities.get(i));
-            gameList.add(dto);
+            gameLists.add(dto);
         };
-        return gameList;
+        return gameLists;
     };
     
     // 모든 entity가 서버에 dto list에 담겨 저장됨
@@ -113,7 +115,7 @@ public class GameService {
         int gamesNum = gameRepository.findGameNum();
         for (int j = 0; j < genres.size(); j++) {
             for (int i = 0; i < gamesNum; i++) {
-                GameDTO dto = gameList.get(i);
+                GameDTO dto = gameLists.get(i);
                 List<String> genreList = dto.getGenre();
                 if (genreList.contains(genres.get(j))) {
                     selectedGame.add(dto.getName());
@@ -128,7 +130,7 @@ public class GameService {
         int gamesNum = gameRepository.findGameNum();
         for (int j = 0; j < tags.size(); j++) {
             for (int i = 0; i < gamesNum; i++) {
-                GameDTO dto = gameList.get(i);
+                GameDTO dto = gameLists.get(i);
                 List<String> tagList = dto.getTag();
                 if (tagList.contains(tags.get(j))) {
                     selectedGame.add(dto.getName());
@@ -142,7 +144,7 @@ public class GameService {
         List<String> selectedGame = new ArrayList<>();
         int gamesNum = gameRepository.findGameNum();
         for (int i = 0; i < gamesNum; i++) {
-            GameDTO dto = gameList.get(i);
+            GameDTO dto = gameLists.get(i);
             selectedGame.add(dto.getName());
         };
         return selectedGame;
