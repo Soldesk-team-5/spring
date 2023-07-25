@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{{>layout/header}}
+<h1>장바구니</h1>
+<div class="container">
+    {{#gamelist}}
+        <div class="inner">
+            <a href="/showgame?name={{.}}"><img src="img/{{.}}.jpg" class="inner-img"></a>
+            <a href="/showgame?name={{.}}"><span class="inner-text">{{.}}</span></a>
+        </div>
+    {{/gamelist}}
+</div>
+{{>layout/footer}}
+</body>
+</html>

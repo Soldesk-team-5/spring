@@ -1,0 +1,25 @@
+
+<header>
+    <div class="navbar">
+        <ul>
+            {{! musatche 방식, ^ 객체가 존재하지 않는다면 /까지 표시}}
+            <div>
+                <a href="/goHome" class="btn">메인페이지</a>
+            </div>
+            {{^nickname}}
+                <li><a href="/signin" class="btn">로그인</a></li>
+                <li><a href="/signup" class="btn">회원가입</a></li>
+            {{/nickname}}
+            {{! musatche 방식, # 객체가 존재한다면 /까지 표시}}
+            {{#nickname}}
+                <li>{{nickname}}님 환영합니다!!</li>
+                <li><a href="/logout" class="btn">로그아웃</a></li>
+                <li><a href="/userInfo" class="btn">마이페이지</a></li>
+                <li><a href="/checkBasket" class="btn">장바구니</a></li>
+            {{/nickname}}
+        </ul>
+    </div>
+</header>
+
+
+

@@ -1,13 +1,40 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>게임 추천받기</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>스팀게임추천서비스</title>
 </head>
 <body>
-    추천받기 페이지
+
+{{>layout/header}}
+
+<h1>게임 추천 서비스</h1>
+<table>
+    <tr>
+        <th>장르</th>
+        {{#genres}}
+            <td><input type="checkbox" name="genre" value={{.}}>{{.}}</td>
+        {{/genres}}
+    </tr>
+    <tr>
+        <th>태그</th>
+        {{#tags}}
+            <td><input type="checkbox" name="tag" value={{.}}>{{.}}</td>
+        {{/tags}}
+    </tr>
+</table>
+<div id="gamesContainer">
+    <!-- 여기에 실시간으로 게임 이미지가 추가됩니다 -->
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type=text/javascript src="/js/gameRecommend.js" ></script>
+{{>layout/footer}}
+
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>

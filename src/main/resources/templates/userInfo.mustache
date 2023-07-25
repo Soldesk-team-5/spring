@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>스팀게임추천서비스</title>
+</head>
+<body>
+
+{{>layout/header}}
+
+<div class="userInfo">
+    <div>
+        <div class="infoInner">
+            아이디 : {{userId}}
+        </div>
+        <div class="infoInner">
+            닉네임 : {{nickname}}
+        </div>
+    </div>
+</div>
+
+<div class="updateInfo">
+    <form action="/updateInfo" method="post">
+        <div class="updateInner">
+            <span class="updateWhat">닉네임 변경</span>
+            <input type="text" name="changedNickname" placeholder="변경할 닉네임"/><br>
+            {{#valid_nickname}}<span class="valid">{{valid_nickname}}</span>{{/valid_nickname}}
+        </div>
+        <div>
+            <span class="updateWhat">비밀번호 변경</span><br>
+            <input type="password" name="changedPassword" placeholder="변경할 비밀번호"/>
+        </div>
+        <button type="submit">정보 수정</button>
+    </form>
+</div>
+
+<div class="deleteInfo">
+    <form action="/deleteInfo" method="post">
+        <input type="password" name="checkPassword" placeholder="삭제하시려면 비밀번호를 입력해주세요"/><br>
+        {{#notEqual}}<span class="valid">{{notEqual}}</span>{{/notEqual}}<br>
+        <button type="submit">회원 탈퇴</button>
+
+    </form>
+</div>
+
+{{>layout/footer}}
+
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</html>
