@@ -183,7 +183,7 @@ public class UserController {
             signinUser.setSelectedGame(gameList);
             userRepository.save(signinUser);
             System.out.println(gameList.size());
-            return "장바구니에 게임을 담았습니다 (" +  gameList.size() + " / 5";
+            return "장바구니에 게임을 담았습니다 (" +  gameList.size() + " / 5)";
         }
 
         if(gameList.contains(gameName)){
