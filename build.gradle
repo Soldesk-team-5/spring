@@ -25,13 +25,13 @@ dependencies {
 	implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
 
 	// sql plugin
-	implementation 'mysql:mysql-connector-java:8.0.28'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 
 	// lombok plungin
 	implementation 'org.projectlombok:lombok:1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
