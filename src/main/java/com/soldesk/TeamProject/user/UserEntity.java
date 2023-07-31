@@ -33,6 +33,11 @@ public class UserEntity {
     private UserRole role;
 
     @Column
-    private List<String> selectedGame;
+    private List<Long> selectedGame;
 
+    @Column(length = 9999)
+    private List<List<Long>> recommendedGame;
+
+    @Column
+    private List<String> recommendedGameTags;
 }

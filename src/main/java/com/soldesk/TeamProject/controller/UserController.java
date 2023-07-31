@@ -1,10 +1,16 @@
 package com.soldesk.TeamProject.controller;
 
+import com.soldesk.TeamProject.game.GameDTO;
+import com.soldesk.TeamProject.game.GameService;
+import com.soldesk.TeamProject.recommendSystem.EventClass;
+import com.soldesk.TeamProject.recommendSystem.RsService;
 import com.soldesk.TeamProject.user.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,17 +29,20 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final UserEntity userEntity;
     private final UserRepository userRepository;
+    private final GameService gameService;
+    private final RsService rsService;
+
+    @Autowired
+    ApplicationEventPublisher publisher;
 
     // 회원가입 페이지로
     @GetMapping("/signup")
     public String signupPage(Model model){
-        model.addAttribute("signinRequest", new SignupRequest());
         return "signup";
     }
 
-    // 회원가입 신청
+    //회원가입 신청
     @PostMapping("/signup")
     public String signup(@Valid @ModelAttribute SignupRequest signupRequest, BindingResult bindingResult, Model model) {
 
@@ -65,8 +76,6 @@ public class UserController {
     // 로그인 페이지로
     @GetMapping("/signin")
     public String signinPage(Model model){
-
-        model.addAttribute("signinRequest", new SigninRequest());
         return "signin";
     }
     
@@ -91,6 +100,10 @@ public class UserController {
         // 세션을 생성하기 전에 기존의 세션 파기
         httpServletRequest.getSession().invalidate();
         HttpSession session = httpServletRequest.getSession(true);  // Session이 없으면 생성
+
+        // rsservice를 위한 session 전달
+        rsService.signinUser = user.getUserId();
+
         // 세션에 nickname, userId를 넣어줌
         session.setAttribute("userId", user.getUserId());
         session.setAttribute("nickname", user.getNickname());
@@ -174,38 +187,84 @@ public class UserController {
 
 
         UserEntity signinUser = userService.getLoginUserByUserId(userId);
-        List<String> gameList = signinUser.getSelectedGame();
-        System.out.println(signinUser);
+        List<Long> gameList = signinUser.getSelectedGame();
+        GameDTO gameDTO = gameService.findByName(gameName);
+        Long gameId = gameDTO.getId();
+
 
         if(gameList == null){
             gameList = new ArrayList<>();
-            gameList.add(gameName);
+            gameList.add(gameId);
+            // 이벤트를 전달
+            publisher.publishEvent(new EventClass(gameList, userId));
             signinUser.setSelectedGame(gameList);
             userRepository.save(signinUser);
-            System.out.println(gameList.size());
             return "장바구니에 게임을 담았습니다 (" +  gameList.size() + " / 5)";
         }
 
-        if(gameList.contains(gameName)){
-            System.out.println(gameList.size());
+        if(gameList.contains(gameId)){
+
             return "이미 장바구니에 있는 게임 입니다";
         }
 
         if (gameList.size() < 5){
-            gameList.add(gameName);
+            gameList.add(gameId);
+            // 이벤트를 전달
+            publisher.publishEvent(new EventClass(gameList, userId));
             signinUser.setSelectedGame(gameList);
             userRepository.save(signinUser);
-            System.out.println(gameList.size());
             return "장바구니에 게임을 담았습니다 (" +  gameList.size() + " / 5)";
         } else {
             return "장바구니가 가득차있습니다!!";
         }
     }
 
+    // Basket으로 가기
     @GetMapping("/checkBasket")
     public String checkBasket(@SessionAttribute(name = "userId", required = false) String userId, Model model){
         UserEntity signinUser = userService.getLoginUserByUserId(userId);
-        model.addAttribute("gamelist", signinUser.getSelectedGame());
+        List<Long> gameIds = signinUser.getSelectedGame();
+        List<Map<String, String>> gameList = new ArrayList<>();
+
+        for (Long gameId : gameIds) {
+            Map<String, String> temp = new HashMap<>();
+            GameDTO gameDTO = gameService.findByGameId(gameId);
+            if(gameDTO == null){
+                break;
+            } else {
+                    temp.put("tempName", gameDTO.getName().replace(" ", "@"));
+                    temp.put("name", gameDTO.getName());
+                    gameList.add(temp);
+                };
+            };
+
+        model.addAttribute("gamelist", gameList);
         return "basket";
+    }
+
+    // 장바구니 삭제
+    @GetMapping("/basketDelete")
+    @ResponseBody
+    public String deleteBasket(@SessionAttribute(name = "userId", required = false) String userId, @RequestParam(value = "items[]", required = false) List<String> games){
+        UserEntity signinUser = userService.getLoginUserByUserId(userId);
+        List<Long> userBasketGames = signinUser.getSelectedGame();
+
+        List<Long> temp = new ArrayList<>();
+
+        // 게임즈의 게임명으로 게임 아이디 찾고 리스트에 담기
+        for (String game : games){
+            game = game.replace("@", " ");
+            GameDTO gameDTO = gameService.findByName(game);
+            temp.add(gameDTO.getId());
+        }
+
+        List<Long> newBasketGames = new ArrayList<>(userBasketGames);
+        newBasketGames.removeAll(temp);
+        
+        // 이벤트를 전달
+        publisher.publishEvent(new EventClass(newBasketGames, userId));
+        signinUser.setSelectedGame(newBasketGames);
+        userRepository.save(signinUser);
+        return "success";
     }
 }

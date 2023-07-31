@@ -4,20 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+
+    <link rel="stylesheet" href="css/basket.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/all.css">
 </head>
-<body>
 {{>layout/header}}
-<h1>장바구니</h1>
-<div class="container">
-    {{#gamelist}}
-        <div class="inner">
-            <a href="/showgame?name={{.}}"><img src="img/{{.}}.jpg" class="inner-img"></a>
-            <a href="/showgame?name={{.}}"><span class="inner-text">{{.}}</span></a>
-        </div>
-    {{/gamelist}}
+
+<div class="content">
+    <div class="inner">
+        <h2>장바구니</h2>
+        <button type="button" id="deleteBtn" name="delete" class="deleteBtn">선택한 게임 삭제</button>
+        {{#gamelist}}
+            <div class="game">
+                <div class="img">
+                    <a href="/showgame?name={{name}}"><img src="img/{{name}}.jpg" class="inner-img"></a>
+                </div>
+                <div class="name">
+                    <input type="checkbox" class="itemCheckbox" value={{tempName}}>
+                    <label class="inner-text" id="gamename" >{{name}}</label>
+                </div>
+            </div>
+        {{/gamelist}}
+    </div>
 </div>
+
 {{>layout/footer}}
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/deleteBasket.js"></script>
 </html>

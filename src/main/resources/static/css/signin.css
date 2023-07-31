@@ -1,0 +1,78 @@
+.content {
+    width: auto;
+    height: 100vh;
+    position: relative;
+
+}
+
+.content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%), url("/cssimg/signinimg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+.signForm {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 45vh;
+            height: 35vh;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            color: white;
+        }
+
+.signForm h2{
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+
+.info_input{
+    border: 0;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color:#262626;
+    color: #8C8C8C;
+    display: block;
+    font-size: 16px;
+    height: 44px;
+    padding: 10px 11px;
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.form_group {
+    margin-bottom: 30px;
+    line-height: 0.7;
+}
+.valid {
+    color: red;
+}
+
+.submit {
+    height: 44px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 24px 0 12px;
+    background: #e50914;
+    color:white;
+}
+
+.submit .btn:hover {
+    background-color: #cc0000;
+}

@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 90;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    margin: 0 50px; /* 수정된 부분 */
+}
+
+.logo {
+    margin-right: auto;
+}
+
+.logo_img {
+    width: 120px;
+}
+
+.nav_btn {
+    margin-left: 20px;
+}
+
+header .btn {
+    padding: 6px 10px;
+    background-color: #e50914;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+header .btn:hover {
+    background-color: #cc0000;
+}
+

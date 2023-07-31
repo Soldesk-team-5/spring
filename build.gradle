@@ -29,10 +29,18 @@ dependencies {
 
 	// lombok plungin
 	implementation 'org.projectlombok:lombok:1.18.26'
+	implementation 'org.deeplearning4j:deeplearning4j:1.0.0-beta7'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// word2vec 사용을 위한 의존성 추가
+	implementation 'org.nd4j:nd4j-native:1.0.0-beta7'
+	implementation 'org.nd4j:nd4j-native-api:1.0.0-beta7'
+	implementation 'org.deeplearning4j:deeplearning4j-nlp:1.0.0-beta7'
+	implementation 'org.nd4j:nd4j-native-platform:1.0.0-beta7'
+
 
 }
 

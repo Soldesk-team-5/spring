@@ -3,7 +3,6 @@ $(document).ready(function() {
         var selectedGenres = [];
         $('input[name="genre"]:checked').each(function() {
             selectedGenres.push($(this).val());
-            console.log(selectedGenres);
         });
 
         var selectedTags = [];
@@ -26,12 +25,12 @@ $(document).ready(function() {
 
                 $.each(data, function(index, game) {
 
-                    var image = '<img src="/img/' + game + '.jpg" alt="' + game + '" class="game-image">';
+                    var image = '<img src="/img/' + game + '.jpg" alt="' + game + '" class="game-image" >';
                     var name = game;
                     // 이미지가 로드되면 추가하기
 
                     $(image).on('load', function() {
-                        var aTag = $('<a href="/showgame?name='+ name +'"></a>');
+                        var aTag = $('<a href="/showgame?name='+ name +'"id="openModalBtn"></a>');
                         aTag.append(image);
                         gamesContainer.append(aTag);
 

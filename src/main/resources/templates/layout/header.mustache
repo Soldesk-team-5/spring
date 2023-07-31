@@ -1,25 +1,24 @@
-
+<body>
 <header>
     <div class="navbar">
-        <ul>
             {{! musatche 방식, ^ 객체가 존재하지 않는다면 /까지 표시}}
-            <div>
-                <a href="/goHome" class="btn">메인페이지</a>
-            </div>
-            {{^nickname}}
-                <li><a href="/signin" class="btn">로그인</a></li>
-                <li><a href="/signup" class="btn">회원가입</a></li>
-            {{/nickname}}
-            {{! musatche 방식, # 객체가 존재한다면 /까지 표시}}
-            {{#nickname}}
-                <li>{{nickname}}님 환영합니다!!</li>
-                <li><a href="/logout" class="btn">로그아웃</a></li>
-                <li><a href="/userInfo" class="btn">마이페이지</a></li>
-                <li><a href="/checkBasket" class="btn">장바구니</a></li>
-            {{/nickname}}
-        </ul>
+            <span class="logo"><a href="/goHome" ><img src="cssimg/logo.png" class="logo_img" alt="GAMEFLIX"></a></span>
+
+
+        {{^nickname}}
+            <span class="nav_btn"><a href="/signin" class="btn" >로그인</a></span>
+            <span class="nav_btn"><a href="/signup" class="btn" >회원가입</a></span>
+        {{/nickname}}
+        {{! musatche 방식, # 객체가 존재한다면 /까지 표시}}
+        {{#nickname}}
+            <span class="nav_btn"><a href="/logout" class="btn">로그아웃</a></span>
+            <span class="nav_btn"><a href="/userInfo" class="btn">마이페이지</a></span>
+            <span class="nav_btn"><a href="/checkBasket" class="btn">장바구니</a></span>
+        {{/nickname}}
     </div>
+
 </header>
+
 
 
 

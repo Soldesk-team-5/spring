@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+
+    <link rel="stylesheet" href="css/signLayout.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/all.css">
+</head>
+{{>layout/header}}
+    <div class="container">
+        {{#firstTag}}
+            <div class="inner">
+                <span class="tag">{{firstTag}}</span>
+                <div class="games">
+                    {{#firstTagGames}}
+                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
+                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    {{/firstTagGames}}
+                </div>
+            </div>
+        {{/firstTag}}
+
+        {{#secondTag}}
+            <div class="inner">
+                <span class="tag">{{secondTag}}</span>
+                <div class="games">
+                    {{#secondTagGames}}
+                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
+                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    {{/secondTagGames}}
+                </div>
+            </div>
+        {{/secondTag}}
+
+        {{#thirdTag}}
+            <div class="inner">
+                <span class="tag">{{thirdTag}}</span>
+                <div class="games">
+                    {{#thirdTagGames}}
+                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
+                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    {{/thirdTagGames}}
+                </div>
+            </div>
+        {{/thirdTag}}
+
+        {{#fourthTag}}
+            <div class="inner">
+                <span class="tag">{{fourthTag}}</span>
+                <div class="games">
+                    {{#fourthTagGames}}
+                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
+                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    {{/fourthTagGames}}
+                </div>
+            </div>
+        {{/fourthTag}}
+
+        {{#fifthTag}}
+            <div class="inner">
+                <span class="tag">{{fifthTag}}</span>
+                <div class="games">
+                    {{#fifthTagGames}}
+                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
+                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    {{/fifthTagGames}}
+                </div>
+            </div>
+        {{/fifthTag}}
+    </div>
+    {{>layout/footer}}
+</body>
+</html>

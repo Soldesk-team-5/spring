@@ -4,37 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>스팀게임추천서비스</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+
+    <link rel="stylesheet" href="css/recommend.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/all.css">
 </head>
-<body>
-
 {{>layout/header}}
-
-<h1>게임 추천 서비스</h1>
-<table>
-    <tr>
-        <th>장르</th>
-        {{#genres}}
-            <td><input type="checkbox" name="genre" value={{.}}>{{.}}</td>
-        {{/genres}}
-    </tr>
-    <tr>
-        <th>태그</th>
-        {{#tags}}
-            <td><input type="checkbox" name="tag" value={{.}}>{{.}}</td>
-        {{/tags}}
-    </tr>
-</table>
-<div id="gamesContainer">
-    <!-- 여기에 실시간으로 게임 이미지가 추가됩니다 -->
+<div class="content">
+    <div class="inner">
+        <h2>게임 검색 서비스</h2>
+        <h3>장르</h3>
+        <div class="genre-container">
+            {{#genres}}
+                <div class="genre-item">
+                    <input type="checkbox" name="genre" value={{.}}>
+                    <label>{{.}}</label>
+                </div>
+            {{/genres}}
+        </div>
+        <h3>태그</h3>
+        <div class="tag-container">
+            {{#tags}}
+                <div class="tag-item">
+                    <input type="checkbox" name="tag" value={{.}}>
+                    <label>{{.}}</label>
+                </div>
+            {{/tags}}
+            <a href="#" id="load">더 보기</a>
+        </div>
+        <div id="gamesContainer">
+            <!-- 여기에 실시간으로 게임 이미지가 추가됩니다 -->
+        </div>
+    </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type=text/javascript src="/js/gameRecommend.js" ></script>
-{{>layout/footer}}
 
-</body>
+<!-- 모달 팝업 -->
+
+{{>layout/footer}}
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type=text/javascript src="/js/gameRecommend.js" ></script>
+<script type=text/javascript src="/js/more.js" ></script>
+<script src="/js/toBasket.js"></script>
+</body>
 </html>

@@ -1,0 +1,20 @@
+/* 페이지 전체 적용 */
+* {
+    -webkit-text-size-adjust: 100%;
+    word-break: keep-all;
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    letter-spacing: 0!important;
+    display: block;
+    position: relative;
+    z-index: 1;
+    margin:0;
+    padding:0;
+}
+
+body {
+    height: 100vh;
+}
+
+/* a태그 밑줄 없애기 */
+a{text-decoration:none;}
+

@@ -1,0 +1,117 @@
+.content {
+    width: auto;
+    min-height: 130vh;
+    position: relative;
+
+}
+
+.content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+.inner {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    top: 100px;
+    left: 3%;
+    width: 90%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    color: white;
+}
+
+.content .inner h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.content .inner .genre-container,
+.content .inner .tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: 5px solid #262626;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+}
+
+.content .inner .genre-item{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.content .inner .genre-item input,
+.content .inner .tag-item input {
+  margin: 0;
+}
+
+.content .inner .genre-item label,
+.content .inner .tag-item label {
+  margin: 0;
+}
+
+
+.inner h2{
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+
+img {
+    width: 290px;
+    height: auto;
+    padding: 8px;
+}
+
+
+
+a {
+    color: white;
+}
+
+#gamesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.tag-item {
+  display:none;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.game-image {
+  /* 기존 game 스타일 유지 */
+  width: 300px; /* 각 게임 이미지의 너비 */
+  margin: 10px; /* 게임 이미지 사이의 간격 */
+    display: flex; /* game 요소를 flex item으로 설정 */
+    flex-direction: column; /* 이미지와 텍스트를 세로로 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    }
+
+# load {
+    border: 5px solid #262626;
+}
