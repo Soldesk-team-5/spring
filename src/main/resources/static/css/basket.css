@@ -82,7 +82,7 @@ a {
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out;
     border: 0;
     position: absolute;
     right: 0;
@@ -92,6 +92,11 @@ a {
 
 .deleteBtn:hover {
     background-color: #cc0000;
+    transform: scale(1.1);
+}
+
+.deleteBtn:focus {
+    cursor: pointer;
 }
 
 label {

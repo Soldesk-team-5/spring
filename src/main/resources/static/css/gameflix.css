@@ -1,0 +1,110 @@
+body {
+
+}
+
+.content {
+    width: auto;
+    min-height: 210vh;
+    position: relative;
+
+}
+
+.content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.inner {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    top: 100px;
+    left: 3%;
+    width: 90%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 850;
+    color: white;
+    height: 370px;
+}
+
+.inner h2 {
+    margin-bottom: 20px;
+}
+
+.games::-webkit-scrollbar {
+    display: none; /* Chrome과 Safari용 */
+  }
+
+.games {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 100%;
+}
+
+.games a{
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+.games img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    border-radius: 20px;
+    height: 200px;
+    width: 250px;
+}
+
+.game {
+    margin-right: 260px;
+}
+
+.leftBtn, .rightBtn{
+    color: white;
+    background: #646464;
+    transition: background-color 0.3s;
+    border: 0;
+}
+
+.leftBtn {
+    width: 40px;
+    height: 50px;
+    bottom: 150px;
+}
+
+.rightBtn {
+    width: 40px;
+    height: 50px;
+    bottom: 190px;
+    left: 97.3%;
+}
+
+.leftBtn:hover {
+    background-color: #e2e2e2;
+}
+
+.rightBtn:hover {
+    background-color: #e2e2e2;
+}
+
+.leftBtn:hover {
+    cursor: pointer;
+}
+
+.rightBtn:focus {
+    cursor: pointer;
+}

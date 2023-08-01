@@ -32,7 +32,7 @@
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    z-index: 999;
+    z-index: 850;
     color: white;
 }
 
@@ -75,10 +75,11 @@
     margin-bottom: 30px;
 }
 
-img {
+.content img {
     width: 290px;
     height: auto;
     padding: 8px;
+    border-radius: 10px;
 }
 
 
@@ -110,6 +111,7 @@ a {
     display: flex; /* game 요소를 flex item으로 설정 */
     flex-direction: column; /* 이미지와 텍스트를 세로로 정렬 */
     align-items: center; /* 가운데 정렬 */
+    cursor: pointer;
     }
 
 # load {

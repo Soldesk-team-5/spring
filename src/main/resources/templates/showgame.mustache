@@ -1,67 +1,74 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+    <title style="display: none;">GAMEFLIX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" href="css/signLayout.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/popup.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/showgame.css">
     <link rel="stylesheet" href="css/all.css">
 </head>
-{{>layout/header}}
+<body>
 <div class="showGame_container">
-    <div>
-        <button type="button" name="toBasket">게임 장바구니에 담기</button>
-    </div>
-    <div class="img">
-        <img src="/img/{{name}}.jpg">
-    </div>
+
+    <button type="button" name="toBasket" class="toBasket">게임 장바구니에 담기</button>
+
     <div class="name">
         <span id="gamename">{{name}}</span>
     </div>
+
+    <div class="imgTags">
+        <div class="img">
+            <img src="/img/{{name}}.jpg">
+        </div>
+        <div class="genres-and-tags">
+            <div class="genres">
+                <h3>장르</h3>
+                <ul>
+                    {{#genres}}
+                        <li>{{.}}</li>
+                    {{/genres}}
+                </ul>
+            </div>
+            <div class="tags">
+                <h3>태그</h3>
+                <ul>
+                    {{#tags}}
+                        <li>{{.}}</li>
+                    {{/tags}}
+                </ul>
+            </div>
+            <div class="linkEval">
+                <div class="link">
+                    <a href="{{steamLink}}" class="steamLink" target="_blank">스팀 링크</a>
+                </div>
+                <div class="eval">
+                    <span>평가 : {{eval}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="description">
-        {{description}}
-    </div>
-    <div class="genres">
-        <ul>
-            {{#genres}}
-                <li>{{.}}</li>
-            {{/genres}}
-        </ul>
-    </div>
-    <div class="genres">
-        <ul>
-            {{#tags}}
-                <li>{{.}}</li>
-            {{/tags}}
-        </ul>
-    </div>
-    <div class="spec">
-        <table>
-            <thead>
-                <th>최소사양</th>
-                <th>권장사양</th>
-            </thead>
-            <tbody>
-                <td>{{specMin}}</td>
-                <td>{{specRec}}</td>
-            </tbody>
-        </table>
-    </div>
-    <div class="link">
-        <a href="{{steamLink}}">스팀 링크</a>
-    </div>
-    <div class="eval">
-        {{eval}}
+        <h3>게임설명</h3>
+        <span>{{description}}</span>
     </div>
 
+    <div class="spec">
+        <div class="min">
+            <h3>최소사양</h3>
+            <span class="specText" id="minText">{{specMin}}</span>
+        </div>
+        <div class="rec">
+            <h3>권장사양</h3>
+            <span class="specText" id="recText">{{specRec}}</span>
+        </div>
+    </div>
+
+
+
 </div>
-{{>layout/footer}}
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/toBasket.js"></script>

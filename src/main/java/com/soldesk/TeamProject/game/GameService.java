@@ -243,10 +243,8 @@ public class GameService {
                 List<String> mergedList = new ArrayList<>(genres);
                 mergedList.removeAll(tags);
                 mergedList.addAll(tags);
-
                 games.put(gameDTO.getName(), mergedList);
             };
-
         };
         // 해당하는 게임명이 없을 때 (이럴 일은 사실 없음)
         return games;

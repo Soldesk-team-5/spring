@@ -36,7 +36,6 @@ public class EventHandler {
         this.userRepository = userRepository;
     }
 
-
     @Async
     @EventListener
     public void calculateRecomendedGame(EventClass event){

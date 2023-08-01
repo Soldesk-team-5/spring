@@ -1,28 +1,19 @@
 package com.soldesk.TeamProject.recommendSystem;
 
-import com.soldesk.TeamProject.game.GameDTO;
-import com.soldesk.TeamProject.game.GameService;
-import com.soldesk.TeamProject.user.UserEntity;
-import com.soldesk.TeamProject.user.UserRepository;
-import com.soldesk.TeamProject.user.UserService;
 import jakarta.annotation.PostConstruct;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationEventPublisher;
+
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 @Service
 @EnableScheduling

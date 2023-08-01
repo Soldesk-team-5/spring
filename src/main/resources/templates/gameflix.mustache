@@ -1,80 +1,112 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+    <title style="display: none;">GAMEFLIX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <link rel="stylesheet" href="css/signLayout.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/gameflix.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/popup.css">
     <link rel="stylesheet" href="css/all.css">
 </head>
+<body>
 {{>layout/header}}
-    <div class="container">
+    <div class="content">
         {{#firstTag}}
             <div class="inner">
-                <span class="tag">{{firstTag}}</span>
-                <div class="games">
+                <span class="tag"><h2>{{firstTag}}</h2></span>
+                <div class="games" id="gamesContainer">
                     {{#firstTagGames}}
-                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
-                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                        <div class="game">
+                            <a href="/showgame?name={{.}}" class="modalLink"><img src="/img/{{.}}.jpg"></a>
+                        </div>
                     {{/firstTagGames}}
                 </div>
+                <button id="carouselLeft" class="leftBtn">◀</button>
+                <button id="carouselRight" class="rightBtn">▶</button>
             </div>
         {{/firstTag}}
 
         {{#secondTag}}
             <div class="inner">
-                <span class="tag">{{secondTag}}</span>
-                <div class="games">
+                <span class="tag"><h2>{{secondTag}}</h2></span>
+                <div class="games" id="gamesContainer2">
                     {{#secondTagGames}}
-                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
-                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    <div class="game">
+                        <a href="/showgame?name={{.}}" class="modalLink2"><img src="/img/{{.}}.jpg"></a>
+                    </div>
                     {{/secondTagGames}}
                 </div>
+                <button id="carouselLeft2" class="leftBtn">◀</button>
+                <button id="carouselRight2" class="rightBtn">▶</button>
             </div>
         {{/secondTag}}
 
         {{#thirdTag}}
             <div class="inner">
-                <span class="tag">{{thirdTag}}</span>
-                <div class="games">
+                <span class="tag"><h2>{{thirdTag}}</h2></span>
+                <div class="games" id="gamesContainer3">
                     {{#thirdTagGames}}
-                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
-                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    <div class="game">
+                        <a href="/showgame?name={{.}}" class="modalLink3"><img src="/img/{{.}}.jpg"></a>
+                    </div>
                     {{/thirdTagGames}}
                 </div>
+                <button id="carouselLeft3" class="leftBtn">◀</button>
+                <button id="carouselRight3" class="rightBtn">▶</button>
             </div>
         {{/thirdTag}}
 
         {{#fourthTag}}
             <div class="inner">
-                <span class="tag">{{fourthTag}}</span>
-                <div class="games">
+                <span class="tag"><h2>{{fourthTag}}</h2></span>
+                <div class="games" id="gamesContainer4">
                     {{#fourthTagGames}}
-                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
-                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    <div class="game">
+                        <a href="/showgame?name={{.}}" class="modalLink4"><img src="/img/{{.}}.jpg"></a>
+                    </div>
                     {{/fourthTagGames}}
                 </div>
+                <button id="carouselLeft4" class="leftBtn">◀</button>
+                <button id="carouselRight4" class="rightBtn">▶</button>
             </div>
         {{/fourthTag}}
 
         {{#fifthTag}}
             <div class="inner">
-                <span class="tag">{{fifthTag}}</span>
-                <div class="games">
+                <span class="tag"><h2>{{fifthTag}}</h2></span>
+                <div class="games" id="gamesContainer5">
                     {{#fifthTagGames}}
-                        <a href="/showgame?name={{.}}"><img src="/img/{{.}}.jpg"><br></a>
-                        <a href="/showgame?name={{.}}"><span id="gamename">{{.}}</span></a>
+                    <div class="game">
+                        <a href="/showgame?name={{.}}" class="modalLink5"><img src="/img/{{.}}.jpg"></a>
+                    </div>
                     {{/fifthTagGames}}
                 </div>
+                <button id="carouselLeft5" class="leftBtn">◀</button>
+                <button id="carouselRight5" class="rightBtn">▶</button>
             </div>
         {{/fifthTag}}
     </div>
-    {{>layout/footer}}
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div><a href="#" class="close">닫기</a></div>
+        <iframe id="modalFrame" src="" width="100%" height="100%"></iframe>
+    </div>
+</div>
+
+{{>layout/footer}}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type=text/javascript src="/js/modal.js"></script>
+<script type=text/javascript src="/js/gameflix.js"></script>
+<script type=text/javascript src="/js/gameflix2.js"></script>
+<script type=text/javascript src="/js/gameflix3.js"></script>
+<script type=text/javascript src="/js/gameflix4.js"></script>
+<script type=text/javascript src="/js/gameflix5.js"></script>
 </body>
 </html>

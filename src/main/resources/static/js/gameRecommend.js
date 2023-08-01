@@ -30,7 +30,7 @@ $(document).ready(function() {
                     // 이미지가 로드되면 추가하기
 
                     $(image).on('load', function() {
-                        var aTag = $('<a href="/showgame?name='+ name +'"id="openModalBtn"></a>');
+                        var aTag = $('<a href="/showgame?name='+ name +'"class="modalLink"></a>');
                         aTag.append(image);
                         gamesContainer.append(aTag);
 
@@ -42,4 +42,6 @@ $(document).ready(function() {
             }
         });
     });
+
 });
+

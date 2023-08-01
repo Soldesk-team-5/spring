@@ -79,6 +79,10 @@
     background-color: #cc0000;
 }
 
+.submit .btn:focus {
+    cursor: pointer;
+}
+
 .deleteInfo {
     border-top: 5px dashed #262626;
     margin-top: 20px;

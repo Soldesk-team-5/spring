@@ -1,36 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+    <title style="display: none;">GAMEFLIX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/all.css">
 </head>
-
+<body>
 {{>layout/header}}
 
 <div class="content">
     <div class="signForm">
-        <form action="/signup" method="post">
+        <form action="/signup" method="post" onsubmit="return validateForm()">
             <h2>회원가입</h2>
             <div class="form_group">
-                <input type="text" name="userId" class="info_input" placeholder="아이디 입력"/>
+                <input type="text" name="userId" class="info_input" id="userId" placeholder="아이디 입력" onkeyup="validateUserId()"/>
                 {{#valid_userId}}<span class="valid">{{valid_userId}}</span>{{/valid_userId}}
             </div>
             <div class="form_group">
-                <input type="password" name="password" class="info_input" placeholder="비밀번호 입력"/>
+                <input type="password" name="password" class="info_input" id="password" placeholder="비밀번호 입력" onkeyup="validatePassword()"/>
             </div>
             <div class="form_group">
-                <input type="password" name="passwordCheck" class="info_input" placeholder="비밀번호 재입력"/>
+                <input type="password" name="passwordCheck" class="info_input" id="passwordCheck" placeholder="비밀번호 재입력" onkeyup="validatePasswordCheck()"/>
                 {{#valid_passwordCheck}}<span class="valid">{{valid_passwordCheck}}</span>{{/valid_passwordCheck}}
             </div>
             <div class="form_group">
-                <input type="text" name="nickname" class="info_input" placeholder="닉네임 입력"/>
+                <input type="text" name="nickname" class="info_input" id="nickname" placeholder="닉네임 입력" onkeyup="validateNickname()"/>
                 {{#valid_nickname}}<span class="valid">{{valid_nickname}}</span>{{/valid_nickname}}
             </div>
             <button type="submit" class="submit">회원가입</button>
@@ -42,6 +43,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="/js/signup.js"></script>
 {{>layout/footer}}
 </script>
 </body>

@@ -6,11 +6,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+
+    public enum UserRole {
+        USER, ADMIN;
+    }
 
     //userId 중복 체크 in 회원가입, 중복되면 true return
 
