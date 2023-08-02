@@ -28,7 +28,7 @@ public class RsService {
     public void loadWord2VecModel() throws Exception{
         System.setProperty("java.library.path", "/path/to/nd4j/library");
         try {
-            this.model = WordVectorSerializer.readWord2VecModel (new File("src/main/resources/static/model/word2vec.bin.gz"));
+            this.model = WordVectorSerializer.readWord2VecModel (new File("spring/src/main/resources/static/model/word2vec.bin.gz"));
         } catch (Exception e) {
             e.printStackTrace();
         }
