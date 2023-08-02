@@ -23,12 +23,17 @@ public class RsService {
     public String signinUser;
 
 
+
     // 모델 불러와서 저장
     @PostConstruct
     public void loadWord2VecModel() throws Exception{
         System.setProperty("java.library.path", "/path/to/nd4j/library");
+        File file = new File("/src/main/resources/static/model/word2vec.bin.gz");
+
         try {
-            this.model = WordVectorSerializer.readWord2VecModel (new File("spring/src/main/resources/static/model/word2vec.bin.gz"));
+            System.out.println(file);
+            System.out.println("==============================================================================================");
+            this.model = WordVectorSerializer.readWord2VecModel (file);
         } catch (Exception e) {
             e.printStackTrace();
         }
