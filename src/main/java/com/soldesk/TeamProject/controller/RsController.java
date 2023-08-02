@@ -34,8 +34,20 @@ public class RsController {
 
         UserEntity signinUser = userService.getLoginUserByUserId(userId);
 
+        // 장바구니에 없을 때
+        if(signinUser.getSelectedGame() == null) {
+            model.addAttribute("noBasket", "장바구니에 게임을 담아주세요");
+            return "gameflix";
+        }
+
+        // 계산 중일 때
         List<String> fiveTags = signinUser.getRecommendedGameTags();
         List<List<Long>> fiveTagsGameList = signinUser.getRecommendedGame();
+
+        if (fiveTagsGameList == null){
+            model.addAttribute("calculating", "추천할 게임을 선정 중 입니다.");
+            return "gameflix";
+        }
 
         List<List<String>> finalFiveTagsGameList = new ArrayList<>();
         for(List<Long> GameList : fiveTagsGameList ) {

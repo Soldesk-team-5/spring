@@ -108,3 +108,17 @@ body {
 .rightBtn:focus {
     cursor: pointer;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  background: black;
+}
+
+.error {
+    color: white;
+    font-size: 24px;
+}
+

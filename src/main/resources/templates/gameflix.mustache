@@ -16,6 +16,19 @@
 <body>
 {{>layout/header}}
     <div class="content">
+
+        {{#noBasket}}
+            <div class="wrapper">
+                <div class="error">{{noBasket}}</div>
+            </div>
+        {{/noBasket}}
+
+        {{#calculating}}
+            <div class="wrapper">
+                <div class="error">{{calculating}}</div>
+            </div>
+        {{/calculating}}
+
         {{#firstTag}}
             <div class="inner">
                 <span class="tag"><h2>{{firstTag}}</h2></span>

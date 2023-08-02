@@ -30,15 +30,15 @@
         </div>
 
         <div class="updateInfo">
-            <form action="/updateInfo" method="post">
+            <form action="/updateInfo" method="post" onsubmit="return validateForm()">
                 <div class="info_inner">
                     <h3>닉네임 변경</h3>
-                    <input type="text" name="changedNickname" placeholder="변경할 닉네임" class="info_input"/>
+                    <input type="text" name="changedNickname" id="changedNickname" placeholder="변경할 닉네임" class="info_input" onkeyup="validateNickname()"/>
                     {{#valid_nickname}}<span class="valid">{{valid_nickname}}</span>{{/valid_nickname}}
                 </div>
                 <div class="info_inner">
                     <h3>비밀번호 변경</h3>
-                    <input type="password" name="changedPassword" placeholder="변경할 비밀번호" class="info_input"/>
+                    <input type="password" name="changedPassword" id="changedPassword" placeholder="변경할 비밀번호" class="info_input" onkeyup="validatePassword()"/>
                 </div>
                 <button type="submit" class="submit">정보 수정</button>
             </form>
@@ -61,6 +61,6 @@
 {{>layout/footer}}
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/x-mustache" src=/js/popup.js"></script>
+<script type="text/x-mustache" src=/js/userInfo.js"></script>
 </body>
 </html>
