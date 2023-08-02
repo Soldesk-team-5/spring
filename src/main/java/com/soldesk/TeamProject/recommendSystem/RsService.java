@@ -28,7 +28,7 @@ public class RsService {
     @PostConstruct
     public void loadWord2VecModel() throws Exception{
         System.setProperty("java.library.path", "/path/to/nd4j/library");
-        File file = new File("/src/main/resources/static/model/word2vec.bin.gz");
+        File file = new File("src/main/resources/static/model/word2vec.bin.gz");
 
         try {
             System.out.println(file);
