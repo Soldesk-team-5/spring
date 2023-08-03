@@ -177,7 +177,7 @@ public class UserController {
         ss.setComplete();
 
         // 정상적으로 삭제되면 메인으로
-        return "redirect:/";
+        return "index";
     }
 
     // 장바구니에 게임 담기
@@ -196,9 +196,9 @@ public class UserController {
             gameList = new ArrayList<>();
             gameList.add(gameId);
             // 이벤트를 전달
-            publisher.publishEvent(new EventClass(gameList, userId));
             signinUser.setSelectedGame(gameList);
             userRepository.save(signinUser);
+            publisher.publishEvent(new EventClass(gameList, userId));
             return "장바구니에 게임을 담았습니다 (" +  gameList.size() + " / 5)";
         }
 
@@ -210,9 +210,9 @@ public class UserController {
         if (gameList.size() < 5){
             gameList.add(gameId);
             // 이벤트를 전달
-            publisher.publishEvent(new EventClass(gameList, userId));
             signinUser.setSelectedGame(gameList);
             userRepository.save(signinUser);
+            publisher.publishEvent(new EventClass(gameList, userId));
             return "장바구니에 게임을 담았습니다 (" +  gameList.size() + " / 5)";
         } else {
             return "장바구니가 가득차있습니다!!";
@@ -260,11 +260,12 @@ public class UserController {
 
         List<Long> newBasketGames = new ArrayList<>(userBasketGames);
         newBasketGames.removeAll(temp);
+
+        signinUser.setSelectedGame(newBasketGames);
+        userRepository.save(signinUser);
         
         // 이벤트를 전달
         publisher.publishEvent(new EventClass(newBasketGames, userId));
-        signinUser.setSelectedGame(newBasketGames);
-        userRepository.save(signinUser);
         return "success";
     }
 }

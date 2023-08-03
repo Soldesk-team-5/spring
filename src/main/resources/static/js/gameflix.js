@@ -9,12 +9,12 @@ function slide(direction) {
   if (isMoving) return;
   isMoving = true;
 
-  const scrollStep = 200; // 필요에 따라 스크롤 스텝을 조정합니다.
+  const scrollStep = 200; // 필요에 따라 스크롤 스텝을 조정
   const scrollAmount = direction === 'left' ? -scrollStep : scrollStep;
   const currentScroll = container.scrollLeft;
   let newScroll = currentScroll + scrollAmount;
 
-  // 스크롤 한계 설정하여 너무 멀리 가지 않도록 합니다.
+  // 스크롤 한계 설정
   const scrollLimit = container.scrollWidth - container.clientWidth;
   newScroll = Math.min(Math.max(newScroll, 0), scrollLimit);
 

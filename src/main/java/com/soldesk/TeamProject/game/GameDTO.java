@@ -25,6 +25,4 @@ public class GameDTO {
     private String steamLink;
     private String eval;
 
-
-
 }

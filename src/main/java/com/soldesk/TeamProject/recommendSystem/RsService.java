@@ -28,8 +28,8 @@ public class RsService {
     @PostConstruct
     public void loadWord2VecModel() throws Exception{
         System.setProperty("java.library.path", "/path/to/nd4j/library");
-        // File file = new File("src/main/resources/static/model/word2vec.bin.gz");
-        File file = new File("word2vec.bin.gz");
+        File file = new File("src/main/resources/static/model/word2vec.bin.gz");
+        //File file = new File("word2vec.bin.gz");
 
         try {
             this.model = WordVectorSerializer.readWord2VecModel (file);
@@ -50,6 +50,33 @@ public class RsService {
         double magnitude1 = vector1.norm2Number().doubleValue();
         double magnitude2 = vector2.norm2Number().doubleValue();
         return dotProduct / (magnitude1 * magnitude2);
+    }
+
+    public List<String> calculateSimilarities2(Map<String, Integer> basket, Map<String, List<String>> withoutBasket) {
+
+        List<String> sortedGameList = new ArrayList<>();
+        Map<String, Double> gameSimilarityMap = new HashMap<>();
+
+        for(String game : withoutBasket.keySet()) {
+            List<String> withoutBasketTagList = withoutBasket.get(game);
+            double similaritySum = 0;
+            for (String bTag : basket.keySet()) {
+                double tempSum = 0;
+                for (String wTag : withoutBasketTagList) {
+                    double similarity = model.similarity(bTag, wTag);
+                    tempSum += similarity;
+                }
+                similaritySum += (tempSum  * basket.get(bTag));
+            }
+            similaritySum = similaritySum / withoutBasketTagList.size();
+            gameSimilarityMap.put(game, similaritySum);
+
+        }
+
+        sortedGameList.addAll(gameSimilarityMap.keySet());
+        sortedGameList.sort((game1, game2) -> Double.compare(gameSimilarityMap.get(game2), gameSimilarityMap.get(game1)));
+
+        return sortedGameList;
     }
 
     // 게임 태그를 벡터로 변환
@@ -79,7 +106,7 @@ public class RsService {
         return vectors;
     };
 
-    // basket 태그들과 다른 게임들 벡터 유사도 평균 계산 후, 게임 순으로 정렬해서 리스트화
+    // basket 태그들과 다른 게임들 벡터 유사도 계산 후, 게임 순으로 정렬해서 리스트화
     public List<String> calculateSimilarities(List<INDArray> basketVectorsList, Map<String, List<INDArray>> otherVectorsMap) {
 
         List<String> sortedGameList = new ArrayList<>();

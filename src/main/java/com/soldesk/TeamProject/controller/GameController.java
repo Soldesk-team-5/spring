@@ -23,7 +23,7 @@ public class GameController {
 
     // 장르들 리스트화 해서 표현 (중복제거)
     @GetMapping("/recommend")
-    public String showGenres(Model model) {
+    public String showGenresTags(Model model) {
         List<String> genres = gameService.getUniqueGenres();
         model.addAttribute("genres", genres);
 
@@ -44,24 +44,6 @@ public class GameController {
     public List<String> searchGames(@RequestParam(value = "genres[]", required = false) List<String> genres,
                                     @RequestParam(value = "tags[]", required = false) List<String> tags) {
 
-//        if (genres != null && genres.size() > 0) {
-//            List<String> genreList = gameService.findByGenre(genres);
-//            if (tags != null && tags.size() > 0) {
-//                List<String> tagList = gameService.findByTag(tags);
-//                List<String> mergedList = new ArrayList<>(genreList);
-//                mergedList.removeAll(tagList);
-//                mergedList.addAll(tagList);
-//                return mergedList;
-//            } else {
-//                return genreList;
-//            }
-//        } else if (tags != null && tags.size() > 0) {
-//            List<String> tagList = gameService.findByTag(tags);
-//            return tagList;
-//        } else {
-//            List<String> all_game = gameService.allGame();
-//            return all_game;
-//        }
 
         List<GameDTO> allGames = gameService.getAllGames(); // 모든 게임 DTO를 가져옴
         List<String> matchingGameNames = new ArrayList<>();
